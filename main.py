@@ -9,7 +9,7 @@ print(f"Once you get {goal} press the S key to start")
 print('_______________________________________________________')
 roll = input('Press enter to roll')
 
-# roll logic
+# roll to start
 while True:
     dice1 = random.randint(1, 4)
     dice2 = random.randint(1, 4)
@@ -20,10 +20,15 @@ while True:
     print('Save roll?') 
     start = input('Y/N').lower()
     print('_______________________________________________________')
+    if start == 's':
+        if total == goal:
+            print('PROGRAM STARTING')
+            break
+        else:
+            sys.exit('Wrong number buddy')
     if start != 'y':
         roll = input('Press enter to roll')
     elif start == 'y':
         sys.exit('Read the instructions next time')
-    elif start == 's' and total == goal:
-        print('nice, job')
-        break
+
+# CAPTHA
