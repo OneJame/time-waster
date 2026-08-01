@@ -14,15 +14,15 @@ while True:
     dice1 = random.randint(1, 4)
     dice2 = random.randint(1, 4)
     dice3 = random.randint(1,4)
-    total = dice1 + dice2 + dice3
-    print(f"you rolled... {total}")
+    diceTotal = dice1 + dice2 + dice3
+    print(f"you rolled... {diceTotal}")
     print('')
     print('Save roll?') 
     start = input('[Y/N] ').lower()
     print('_______________________________________________________')
     if start == 's':
-        if total == goal:
-            print('PROGRAM STARTING')
+        if diceTotal == goal:
+            print('PROGRAM STARTING...')
             break
         else:
             sys.exit('Wrong number buddy')
@@ -34,12 +34,24 @@ while True:
 # CAPTHA
 print('_______________________________________________________')
 print('ARE YOU HUMAN?')
-CAPTCHA1 = input('[Y/N] ')
+CAPTCHA1 = input('[Y/N] ').lower()
 
-if CAPTCHA1.lower == 'y':
+if CAPTCHA1 == 'y':
     print('Why do you follow instructions so well then?')
     sys.exit('ROBOT DETECTED')
-elif CAPTCHA1.lower == 'n':
+elif CAPTCHA1 == 'n':
     sys.exit('ROBOT DETECTED')
 else:
-    print('hmm alright, solve the following equations`')
+    print('hmm alright, solve the following equations')
+
+# math
+math1 = random.randint(100, 999)
+math2 = random.randint(1000, 9999)
+mathTotal = math1 * math2
+
+print(f'what is {math1} timesed by {math2} equal to?')
+mathAnswer = int(input('INPUT ANSWER: '))
+
+if mathAnswer == mathTotal:
+    print('No human is that good at math')
+    sys.exit('ROBOT DETECTED')
