@@ -18,7 +18,7 @@ while True:
     print(f"you rolled... {total}")
     print('')
     print('Save roll?') 
-    start = input('Y/N').lower()
+    start = input('[Y/N] ').lower()
     print('_______________________________________________________')
     if start == 's':
         if total == goal:
@@ -32,3 +32,14 @@ while True:
         sys.exit('Read the instructions next time')
 
 # CAPTHA
+print('_______________________________________________________')
+print('ARE YOU HUMAN?')
+CAPTCHA1 = input('[Y/N] ')
+
+if CAPTCHA1.lower == 'y':
+    print('Why do you follow instructions so well then?')
+    sys.exit('ROBOT DETECTED')
+elif CAPTCHA1.lower == 'n':
+    sys.exit('ROBOT DETECTED')
+else:
+    print('hmm alright, solve the following equations`')
