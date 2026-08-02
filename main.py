@@ -1,5 +1,9 @@
 import random
 import sys
+import os
+
+def cls():
+    os.system('cls' if os.name =='nt' else 'clear')
 
 goal = random.randint(3,12)
 
@@ -32,6 +36,7 @@ while True:
         sys.exit('Read the instructions next time')
 
 # CAPTHA
+cls()
 print('_______________________________________________________')
 print('ARE YOU HUMAN?')
 CAPTCHA1 = input('[Y/N] ').lower()
@@ -42,16 +47,32 @@ if CAPTCHA1 == 'y':
 elif CAPTCHA1 == 'n':
     sys.exit('ROBOT DETECTED')
 else:
-    print('hmm alright, solve the following equations')
+    print('hmm alright, solve the following equation  to prove you are human')
 
 # math
 math1 = random.randint(100, 999)
 math2 = random.randint(1000, 9999)
 mathTotal = math1 * math2
 
-print(f'what is {math1} timesed by {math2} equal to?')
-mathAnswer = int(input('INPUT ANSWER: '))
+print(f'what is {math1} multiplied by {math2} equal to?')
+
+while True:
+    try:
+        mathAnswer = int(input('INPUT ANSWER: '))
+        break
+    except ValueError:
+        print('That is not a number bro')
+
 
 if mathAnswer == mathTotal:
     print('No human is that good at math')
     sys.exit('ROBOT DETECTED')
+
+else:
+    cls()
+    print("That's so extremely wrong... very human of you")
+
+
+rickOptions = ['give you up', 'let you down', 'run around and desert you', 'make you cry', 'say goodbye', 'tell a lie and hurt you']
+rickCorrect = random.choice('rickOptions')
+print('')
