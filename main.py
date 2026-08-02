@@ -47,7 +47,7 @@ if CAPTCHA1 == 'y':
 elif CAPTCHA1 == 'n':
     sys.exit('ROBOT DETECTED')
 else:
-    print('hmm alright, solve the following equation  to prove you are human')
+    print('hmm alright, solve the following equation to prove you are human')
 
 # math
 math1 = random.randint(100, 999)
@@ -73,6 +73,17 @@ else:
     print("That's so extremely wrong... very human of you")
 
 
-rickOptions = ['give you up', 'let you down', 'run around and desert you', 'make you cry', 'say goodbye', 'tell a lie and hurt you']
-rickCorrect = random.choice('rickOptions')
+rickOptions = ['give you up', 'let you down', 'run around and desert you', 'make you cry', 'say goodbye', 'tell a lie and hurt you',]
+rickCorrect = random.choice(rickOptions)
+print('Finish the lyrics')
 print('')
+print('"Never gonna..."')
+print('A. Give you up')
+print('B. Let you down')
+print('C. Run around and desert you')
+print('D. Make you cry')
+print('E. Say goodbye')
+print('F. Tell a lie and hurt you')
+
+rickGuess = input('A, B, C, D, E or F? ')
+
