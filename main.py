@@ -1,6 +1,7 @@
 import random
 import sys
 import os
+import time
 
 def cls():
     os.system('cls' if os.name =='nt' else 'clear')
@@ -35,6 +36,32 @@ while True:
     elif start == 'y':
         sys.exit('Read the instructions next time')
 
+# loading cycle
+loadTime = random.randint(5, 10)
+loadCurrent = 0
+
+while loadCurrent != loadTime:
+    cls()
+    print('Loading')
+    time.sleep(1)
+    cls()
+    print('Loading.')
+    time.sleep(1)
+    cls()
+    print('Loading..')
+    time.sleep(1)
+    cls()
+    print('Loading...')
+    time.sleep(1)
+    cls()
+    print('Loading....')
+    time.sleep(1)
+    loadCurrent += 1
+
+cls()
+print('Starting program!')
+time.sleep(3)
+
 # CAPTHA
 cls()
 print('_______________________________________________________')
@@ -47,6 +74,7 @@ if CAPTCHA1 == 'y':
 elif CAPTCHA1 == 'n':
     sys.exit('ROBOT DETECTED')
 else:
+    cls()
     print('hmm alright, solve the following equation to prove you are human')
 
 # math
@@ -73,9 +101,9 @@ else:
     print("That's so extremely wrong... very human of you")
 
 
-rickOptions = ['give you up', 'let you down', 'run around and desert you', 'make you cry', 'say goodbye', 'tell a lie and hurt you',]
+rickOptions = ['a', 'b', 'c', 'd', 'e', 'f',]
 rickCorrect = random.choice(rickOptions)
-print('Finish the lyrics')
+print('Finish the lyrics if you really are that human')
 print('')
 print('"Never gonna..."')
 print('A. Give you up')
@@ -85,5 +113,16 @@ print('D. Make you cry')
 print('E. Say goodbye')
 print('F. Tell a lie and hurt you')
 
-rickGuess = input('A, B, C, D, E or F? ')
+rickGuess = input('A, B, C, D, E or F? ').lower()
+lives = 3
+
+while rickGuess != rickCorrect:
+    if rickGuess in ['a', 'b', 'c', 'd', 'e', 'f']:
+        lives -= 1
+        print(f'INCORRECT {lives} ATTEMPTS REMAINING')
+
+    else:
+        print('It is not this difficult bro...')
+
+    rickGuess = input('A, B, C, D, E or F? ').lower()
 
