@@ -81,7 +81,7 @@ def captcha():
         cls()
 
 def math():
-     print('hmm alright, solve the following equation to prove you are human')
+    print('hmm alright, solve the following equation to prove you are human')
     
         # math
     math1 = random.randint(100, 999)
@@ -105,18 +105,8 @@ def math():
     else:
         cls()
         print("That's so extremely wrong... very human of you")
-        
 
-finished = False
-
-while not finished:
-
-    dice()
-    load()
-    captcha()
-
-
-
+def music():
     rickOptions = ['a', 'b', 'c', 'd', 'e', 'f',]
     rickCorrect = random.choice(rickOptions)
     print('Finish the lyrics if you really are that human')
@@ -128,10 +118,10 @@ while not finished:
     print('D. Make you cry')
     print('E. Say goodbye')
     print('F. Tell a lie and hurt you')
-
+    
     rickGuess = input('A, B, C, D, E or F? ').lower()
     lives = 3
-
+    
     while rickGuess != rickCorrect:
         if rickGuess in ['a', 'b', 'c', 'd', 'e', 'f']:
             lives -= 1
@@ -144,22 +134,20 @@ while not finished:
     while lives < 1:
         print('ROBOT DETECTED, HUMANS ENJOY MUSIC...')
         break
+    
+        
 
-    print("You have proven yourself so far")
-    print('ACCESS GRANTED')
-    print('Are you sure you want all this power?')
-    response = input('>').lower()
+finished = False
 
-    if response == "yes":
-        print('Are you really unsure?')
-        response = input('>').lower()
-        if response == 'yes':
-            print('Goodybye then')
+while not finished:
 
-    else:
-        print('GOODBYE')
+    dice()
+    load()
+    captcha()
+    math()
+    music()
 
-    print('Alright then, if youre sure...')
+    print( 'HUMAN VERIFICATION COMPLETE...')
     print('ENTER PASSWORD...')
     password = 1752764
     pw_attempt = input('>').lower()
