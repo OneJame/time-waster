@@ -107,8 +107,15 @@ def math():
         print("That's so extremely wrong... very human of you")
 
 def music():
-    rickOptions = ['a', 'b', 'c', 'd', 'e', 'f',]
-    rickCorrect = random.choice(rickOptions)
+    lyrics = {
+        'a' : 'Give you up',
+        'b' : 'Let you down',
+        'c' : 'Run around and desert you',
+        'd' : 'Make you cry',
+        'e' : 'Say goodbye',
+        'f' : 'Tell a lie and hurt you'
+    }
+    rickSequence = ['a', 'b', 'c', 'f', 'e', 'd']
     print('Finish the lyrics if you really are that human')
     print('')
     print('"Never gonna..."')
@@ -120,20 +127,53 @@ def music():
     print('F. Tell a lie and hurt you')
     
     rickGuess = input('A, B, C, D, E or F? ').lower()
-    lives = 3
     
-    while rickGuess != rickCorrect:
-        if rickGuess in ['a', 'b', 'c', 'd', 'e', 'f']:
-            lives -= 1
-            print(f'INCORRECT {lives} ATTEMPTS REMAINING')
+    if rickGuess == rickSequence[0]:
+        cls()
+        print('Hmm, alright. That might be a fluke, try again')
+        print('"Never gonna..."')
+        print('A. Give you up')
+        print('B. Let you down')
+        print('D. Make you cry')
+        print('E. Say goodbye')
+        print('F. Tell a lie and hurt you')
+    
+        rickGuess = input('A, B, D, E or F? ').lower()
 
-        else:
-            print('It is not this difficult bro...')
+        if rickGuess == rickSequence[1]:
+            cls()
+            print('Robots could still be that good, try again')
+            print('"Never gonna..."')
+            print('B. Let you down')
+            print('D. Make you cry')
+            print('E. Say goodbye')
+            print('F. Tell a lie and hurt you')
 
-        rickGuess = input('A, B, C, D, E or F? ').lower()
-    while lives < 1:
-        print('ROBOT DETECTED, HUMANS ENJOY MUSIC...')
-        break
+            rickGuess = input('B, D, E or F? ').lower()
+
+            if rickGuess == rickSequence[2]:
+                cls()
+                print('I still dont belive it, try again')
+                print('"Never gonna..."')
+                print('D. Make you cry')
+                print('E. Say goodbye')
+                print('F. Tell a lie and hurt you')
+
+                rickGuess = input('D, E or F? ').lower()
+
+                if rickGuess == rickSequence[3]:
+                    cls()
+                    print('Hmm, just one more time')
+
+                    print('"Never gonna..."')
+                    print('D. Make you cry')
+                    print('F. Tell a lie and hurt you')
+                    
+                    rickGuess = input('D, or F? ').lower()
+    else:
+        cls()
+        print('yeah, nice try at fooling me bucko.')
+
     
         
 
