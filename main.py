@@ -115,64 +115,53 @@ def music():
         'e' : 'Say goodbye',
         'f' : 'Tell a lie and hurt you'
     }
+
+    comments = [
+        'Hmmm, might be a fluke, try another one.',
+        'Robots could still be that good, do another one.'
+        'I still dont belive it, do it again.',
+        'Hmm, just once more',
+        'May aswell keep going now, youve come this far',
+        'OK, one more for real this time.'
+
+    ]
     rickSequence = ['a', 'b', 'c', 'f', 'e', 'd']
-    print('Finish the lyrics if you really are that human')
-    print('')
-    print('"Never gonna..."')
-    print('A. Give you up')
-    print('B. Let you down')
-    print('C. Run around and desert you')
-    print('D. Make you cry')
-    print('E. Say goodbye')
-    print('F. Tell a lie and hurt you')
-    
-    rickGuess = input('A, B, C, D, E or F? ').lower()
-    
-    if rickGuess == rickSequence[0]:
-        cls()
-        print('Hmm, alright. That might be a fluke, try again')
-        print('"Never gonna..."')
-        print('A. Give you up')
-        print('B. Let you down')
-        print('D. Make you cry')
-        print('E. Say goodbye')
-        print('F. Tell a lie and hurt you')
-    
-        rickGuess = input('A, B, D, E or F? ').lower()
 
-        if rickGuess == rickSequence[1]:
-            cls()
-            print('Robots could still be that good, try again')
+    while True:
+        availableOptions = list(lyrics.keys())
+        cls()
+        print('Finish the lyrics if you really are that human')
+        failed = False
+        for i, correctAnswer in enumerate(rickSequence):
             print('"Never gonna..."')
-            print('B. Let you down')
-            print('D. Make you cry')
-            print('E. Say goodbye')
-            print('F. Tell a lie and hurt you')
 
-            rickGuess = input('B, D, E or F? ').lower()
-
-            if rickGuess == rickSequence[2]:
+            for letter in sorted(availableOptions):
+                print(f'{letter.upper()}. {lyrics[letter]}')
+            print()
+            rickGuess = input(f'Choose from {', '.join([str(x).upper() for x in sorted(availableOptions)])}: ').lower()
+    
+            if rickGuess == correctAnswer:
                 cls()
-                print('I still dont belive it, try again')
-                print('"Never gonna..."')
-                print('D. Make you cry')
-                print('E. Say goodbye')
-                print('F. Tell a lie and hurt you')
+                if correctAnswer in availableOptions:
+                    availableOptions.remove(correctAnswer)
 
-                rickGuess = input('D, E or F? ').lower()
+                if i < len(rickSequence):
+                    print(comments[min(i, len(comments)-1)])
 
-                if rickGuess == rickSequence[3]:
-                    cls()
-                    print('Hmm, just one more time')
+            elif rickGuess not in availableOptions:
+                cls()
+                print('not this hard bucko...')
+            else:
+                cls()
+                print('ROBOT DETECTED')
+                time.sleep(2)
+                failed = True
+                break
 
-                    print('"Never gonna..."')
-                    print('D. Make you cry')
-                    print('F. Tell a lie and hurt you')
-                    
-                    rickGuess = input('D, or F? ').lower()
-    else:
-        cls()
-        print('yeah, nice try at fooling me bucko.')
+        if not failed:
+            print('hmm, alright then...')
+            return
+
 
     
         
@@ -181,10 +170,10 @@ finished = False
 
 while not finished:
 
-    dice()
-    load()
-    captcha()
-    math()
+    #dice()
+    #load()
+    #captcha()
+    #math()
     music()
 
     print( 'HUMAN VERIFICATION COMPLETE...')
