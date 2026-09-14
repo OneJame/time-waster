@@ -3,6 +3,11 @@ import sys
 import os
 import time
 
+#Colours / Text Effects!
+red = '\033[91m'
+white = '\033[0m'
+bold = '\033[1m'
+
 def cls():
     os.system('cls' if os.name =='nt' else 'clear')
 
@@ -10,10 +15,10 @@ def dice():
     goal = random.randint(3,12)
     
     
-    print(f"Roll the dice until you get the number {goal} to start the program")
+    print(f"{bold}Roll the dice until you get the number {goal} to start the program")
     print(f"Once you get {goal} press the S key to start")
     print('_______________________________________________________')
-    roll = input('Press enter to roll')
+    roll = input(f'Press enter to roll{white}')
     
     # roll to start
     while True:
@@ -23,8 +28,8 @@ def dice():
         diceTotal = dice1 + dice2 + dice3
         print(f"you rolled... {diceTotal}")
         print('')
-        print('Save roll?') 
-        start = input('[Y/N] ').lower()
+        print(f'{bold}Save roll?') 
+        start = input(f'[Y/N] {white}').lower()
         print('_______________________________________________________')
         if start == 's':
             if diceTotal == goal:
@@ -33,7 +38,7 @@ def dice():
             else:
                 sys.exit('Wrong number buddy')
         if start != 'y':
-            roll = input('Press enter to roll')
+            roll = input(f'{bold}Press enter to roll{white}')
         elif start == 'y':
             print('read the instructions, bucko')
             break
@@ -170,10 +175,10 @@ finished = False
 
 while not finished:
 
-    #dice()
-    #load()
-    #captcha()
-    #math()
+    dice()
+    load()
+    captcha()
+    math()
     music()
 
     print( 'HUMAN VERIFICATION COMPLETE...')
