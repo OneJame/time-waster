@@ -40,8 +40,8 @@ def dice():
         if start != 'y':
             roll = input(f'{bold}Press enter to roll{white}')
         elif start == 'y':
-            print('read the instructions, bucko')
-            break
+            print(f'{red}read the instructions, bucko{white}')
+            sys.SystemExit('')
 
 def load():
     # loading cycle
@@ -73,43 +73,40 @@ def load():
 def captcha():
         # CAPTHA
     cls()
-    print('_______________________________________________________')
+    print(f'{bold}_______________________________________________________')
     print('ARE YOU HUMAN?')
-    CAPTCHA1 = input('[Y/N] ').lower()
+    CAPTCHA1 = input(f'[Y/N] {white}').lower()
 
-    if CAPTCHA1 == 'y':
-        print('Why do you follow instructions so well then?')
-        sys.exit('ROBOT DETECTED')
-    elif CAPTCHA1 == 'n':
-        sys.exit('ROBOT DETECTED')
+    if CAPTCHA1 in ['y', 'n']:
+        sys.exit(f'{red}ROBOT DETECTED{white}')
     else:
-        cls()
+        print(f'{bold}CAPTCHA COMPLETED{white}')
 
 def math():
-    print('hmm alright, solve the following equation to prove you are human')
+    print(f'{bold}HUMANS LEARN MATH AT A YOUNG AGE \n SOLVE THIS MATH EQUATION{white}')
     
         # math
     math1 = random.randint(100, 999)
     math2 = random.randint(1000, 9999)
     mathTotal = math1 * math2
     
-    print(f'what is {math1} multiplied by {math2} equal to?')
+    print(f'what is{bold} {math1}{white} multiplied by{bold} {math2}{white} equal to?')
     
     while True:
         try:
-            mathAnswer = int(input('INPUT ANSWER: '))
+            mathAnswer = int(input(f'{bold}INPUT ANSWER: {white}'))
             break
         except ValueError:
-            print('That is not a number bro')
+            print(f'{bold}I DO NOT KNOW THE NUMBER {mathAnswer}{white}')
     
     
     if mathAnswer == mathTotal:
-        print('No human is that good at math')
+        print(f'{bold}HAHA, THAT WAS A TRICK. HUMANS ARE NOT ACTUALLY GOOD AT MATH.{white}')
         sys.exit('ROBOT DETECTED')
     
     else:
         cls()
-        print("That's so extremely wrong... very human of you")
+        print(f"{bold}HUMAN LEVEL MATH SKILLS DETECTED.{white}")
 
 def music():
     lyrics = {
@@ -121,21 +118,12 @@ def music():
         'f' : 'Tell a lie and hurt you'
     }
 
-    comments = [
-        'Hmmm, might be a fluke, try another one.',
-        'Robots could still be that good, do another one.'
-        'I still dont belive it, do it again.',
-        'Hmm, just once more',
-        'May aswell keep going now, youve come this far',
-        'OK, one more for real this time.'
-
-    ]
     rickSequence = ['a', 'b', 'c', 'f', 'e', 'd']
 
     while True:
         availableOptions = list(lyrics.keys())
         cls()
-        print('Finish the lyrics if you really are that human')
+        print(f'{bold}HUMANS ENJOY MUSIC, SELECT THE CORRECT FOLLOWING LYRICS. {white}')
         failed = False
         for i, correctAnswer in enumerate(rickSequence):
             print('"Never gonna..."')
@@ -143,7 +131,7 @@ def music():
             for letter in sorted(availableOptions):
                 print(f'{letter.upper()}. {lyrics[letter]}')
             print()
-            rickGuess = input(f'Choose from {', '.join([str(x).upper() for x in sorted(availableOptions)])}: ').lower()
+            rickGuess = input(f'{bold}CHOOSE FROM: {white}{', '.join([str(x).upper() for x in sorted(availableOptions)])}: ').lower()
     
             if rickGuess == correctAnswer:
                 cls()
@@ -151,7 +139,7 @@ def music():
                     availableOptions.remove(correctAnswer)
 
                 if i < len(rickSequence):
-                    print(comments[min(i, len(comments)-1)])
+                    print(f'{bold}A ROBOT COULD HAVE GOTTEN THAT, TRY ANOTHER...{white}')
 
             elif rickGuess not in availableOptions:
                 cls()
