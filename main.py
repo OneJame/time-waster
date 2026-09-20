@@ -15,8 +15,8 @@ def dice():
     goal = random.randint(3,12)
     
     
-    print(f"{bold}Roll the dice until you get the number {goal} to start the program")
-    print(f"Once you get {goal} press the S key to start")
+    print(f"Roll the dice until you get the number {bold}{goal}{white} to start the program")
+    print(f"Once you get {bold}{goal}{white} press the S key to start")
     print('_______________________________________________________')
     roll = input(f'Press enter to roll{white}')
     
@@ -24,24 +24,31 @@ def dice():
     while True:
         dice1 = random.randint(1, 4)
         dice2 = random.randint(1, 4)
-        dice3 = random.randint(1,4)
+        dice3 = random.randint(1, 4)
         diceTotal = dice1 + dice2 + dice3
-        print(f"you rolled... {diceTotal}")
+        print(f"{bold}you rolled... {diceTotal}{white}")
         print('')
-        print(f'{bold}Save roll?') 
-        start = input(f'[Y/N] {white}').lower()
+        print(f'{white}Save roll?') 
+        start = input(f'{bold}[Y/N] {white}').lower()
         print('_______________________________________________________')
         if start == 's':
             if diceTotal == goal:
-                print('PROGRAM STARTING...')
+                print(f'{bold}PROGRAM STARTING...{white}')
                 break
             else:
-                sys.exit('Wrong number buddy')
-        if start != 'y':
-            roll = input(f'{bold}Press enter to roll{white}')
+                print(f'{bold}{diceTotal} DOES NOT MATCH {goal}{white}')
+                sys.exit('')
         elif start == 'y':
-            print(f'{red}read the instructions, bucko{white}')
-            sys.SystemExit('')
+            print(f'{bold}{red}ERROR: DO BETTER NEXT TIME{white}')
+            sys.exit('')
+
+        elif start == 'n':
+            print('_______________________________________________________')
+            roll = input(f'Press enter to roll{white}')
+
+        else:
+            print(f'{bold}{start} IS NOT RECOGNISED{white}')
+            sys.exit('')
 
 def load():
     # loading cycle
@@ -62,7 +69,7 @@ def load():
         print('Loading...')
         time.sleep(1)
         cls()
-        print('Loading....\n (Password:1752764)')
+        print('Loading....')
         time.sleep(1)
         loadCurrent += 1
 
