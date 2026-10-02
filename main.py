@@ -15,9 +15,9 @@ def dice():
     goal = random.randint(3,12)
     
     
-    print(f"Roll the dice until you get the number {bold}{goal}{white} to start the program")
+    print(f"Roll the dice until you get the number {bold}{goal}{white}")
     print(f"Once you get {bold}{goal}{white} press the S key to start")
-    print('_______________________________________________________')
+    print(f'{bold}_______________________________________________________{white}')
     roll = input(f'Press enter to roll{white}')
     
     # roll to start
@@ -46,7 +46,7 @@ def dice():
             roll = input(f'Press enter to roll{white}')
 
         else:
-            print(f'{bold}{start} IS NOT RECOGNISED{white}')
+            print(f'{bold}INPUT "{start}" IS NOT RECOGNISED{white}')
             sys.exit('')
 
 def load():
@@ -168,9 +168,9 @@ finished = False
 
 while not finished:
 
-    #dice()
-    #load()
-    #captcha()
+    dice()
+    load()
+    captcha()
     math()
     music()
 
