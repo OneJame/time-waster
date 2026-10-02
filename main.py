@@ -179,11 +179,11 @@ def yap():
 
 while not finished:
 
-    #dice()
-    #load()
-    #captcha()
-    #math()
-    #music()
+    dice()
+    load()
+    captcha()
+    math()
+    music()
     yap()
     finished = True
 
