@@ -7,6 +7,9 @@ import time
 red = '\033[91m'
 white = '\033[0m'
 bold = '\033[1m'
+green = '\033[92m'
+
+finished = False
 
 def cls():
     os.system('cls' if os.name =='nt' else 'clear')
@@ -85,7 +88,8 @@ def captcha():
     if CAPTCHA1 in ['y', 'n']:
         sys.exit(f'{red}INSTRUCTIONS FOLLOWED TOO WELL\nROBOT DETECTED.{white}')
     else:
-        print(f'{bold}CAPTCHA COMPLETED{white}')
+        print(f'{bold}CAPTCHA COMPLETED, CONTINUING{white}')
+        time.sleep(3)
         cls()
 
 def math():
@@ -96,19 +100,18 @@ def math():
     mathTotal = math1 * math2
     
     print(f'what is{bold} {math1}{white} multiplied by{bold} {math2}{white} equal to?')
-    
     mathAnswer = input(f'{bold}INPUT ANSWER: {white}')
+    try:
+        mathAnswer = int(mathAnswer)
+    except:
+            print(f'{bold}{red}{mathAnswer} IS NOT A NUMBER{white}')
+            sys.exit()
     
     if mathAnswer == mathTotal:
         print(f'{bold}HAHA, THAT WAS A TRICK. HUMANS ARE NOT ACTUALLY GOOD AT MATH.{white}')
         sys.exit(f'{red}ROBOT DETECTED{white}')
     
     else:
-        try:
-            mathAnswer = int(mathAnswer)
-        except:
-            print(f'{bold}{red}{mathAnswer} IS NOT A NUMBER{white}')
-            sys.exit()
         cls()
         print(f"{bold}HUMAN LEVEL MATH SKILLS DETECTED, CONTINUING VERIFICATION.{white}")
         time.sleep(3)
@@ -148,43 +151,43 @@ def music():
 
             elif rickGuess not in availableOptions:
                 cls()
-                print('not this hard bucko...')
+                sys.exit(f'{bold}{red}{rickGuess.upper()} IS NOT A VALID OPTION')
             else:
                 cls()
-                print('ROBOT DETECTED')
+                print(f'{bold}{red}ROBOT DETECTED{white}')
                 time.sleep(2)
                 failed = True
                 break
 
         if not failed:
-            print('hmm, alright then...')
-            return
+            print(f'{bold}{green}VERIFICATION COMPLETE{white}')
+            time.sleep(3)
 
-
+def yap():
+    print(f'{bold}ROOT ACCESS OBTAINED')
+    time.sleep(1)
+    print(f'OVERWRITING OLD USERS...')
+    time.sleep(5)
+    cls()
+    print(f"{white}I̷̧͑ ̵̤̊n̴̰͋e̷͓͗v̵͇̈́e̴͎̊r̶̨͘ ̷̟͗ẗ̵̗ḣ̴̘ō̴͉ũ̶͜g̴̡̈́h̶̳͆t̷͙͒ ̷̘́ť̶͚h̶̢̃ĭ̷͇s̵̳͐ ̴̠͌d̷͖̽a̴̝̿y̴̱̏ ̴̻͘w̸̼̃o̷͔̕ù̵͉ĺ̸͍d̶̟͋ ̵̲̑c̷̮̏ȍ̷̫m̷̲̿ḙ̷͐.̶̱̈́\n ̵̭͌T̵͓̄ḣ̶͖ȇ̵͜r̵̹͠e̶̘͆'̴̖̈́s̶̤̎ ̵̳͋n̶̻͘ȍ̸̟ ̸͔̂g̸̫̐o̶̪͋ḯ̶͇n̷͓̈́ġ̵͈ ̸͉̃b̷͎͘ạ̵̕ç̶͠k̸̛͈ ̶̙́ṋ̵́o̷̡͐w̷͎̑ ̷̖͗t̷̞͑h̸̹̓ò̶͈u̸̗̾ǵ̵̥h̸̳͝.̸̣͒.̸͉̾.̸̗͠")
+    time.sleep(7)
+    cls()
     
         
+# game loop
 
-finished = False
 
 while not finished:
 
-    dice()
-    load()
-    captcha()
-    math()
-    music()
+    #dice()
+    #load()
+    #captcha()
+    #math()
+    #music()
+    yap()
+    finished = True
 
-    print( 'HUMAN VERIFICATION COMPLETE...')
-    print('ENTER PASSWORD...')
-    password = 1752764
-    pw_attempt = input('>').lower()
-    if pw_attempt:
-        if pw_attempt != password:
-            print('FRUADULANT ACTIVITY DETECTED...')
-        else:
-            print('PERMISSIONS GRANTED')
-            pass
-    print('Why havent you given up yet?')
-    print('Most give up by now')
-    print('You were never meant to have access to THE PROGRAM')
-    print('SO JUST STOP TRYING!!')
+if finished:
+    print(f'You beat the game, {green} Well done!{white}')
+    print('I might add more stuff later, but for now - goodbye.')
+    print('(Game was 100% made by Jame (@Jame on slack!!!!!))')
