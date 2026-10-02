@@ -43,7 +43,6 @@ def dice():
             sys.exit('')
 
         elif start == 'n':
-            print('_______________________________________________________')
             roll = input(f'Press enter to roll{white}')
 
         else:
@@ -78,42 +77,41 @@ def load():
     time.sleep(3)
 
 def captcha():
-        # CAPTHA
     cls()
-    print(f'{bold}_______________________________________________________')
-    print('ARE YOU HUMAN?')
-    CAPTCHA1 = input(f'[Y/N] {white}').lower()
+    print(f'_______________________________________________________')
+    print(f'ARE YOU HUMAN?')
+    CAPTCHA1 = input(f'{bold}[Y/N]: {white}').lower()
 
     if CAPTCHA1 in ['y', 'n']:
-        sys.exit(f'{red}ROBOT DETECTED{white}')
+        sys.exit(f'{red}INSTRUCTIONS FOLLOWED TOO WELL\nROBOT DETECTED.{white}')
     else:
         print(f'{bold}CAPTCHA COMPLETED{white}')
+        cls()
 
 def math():
-    print(f'{bold}HUMANS LEARN MATH AT A YOUNG AGE \n SOLVE THIS MATH EQUATION{white}')
+    print(f'{bold}HUMANS LEARN MATH AT A YOUNG AGE, SOLVE THIS MATH EQUATION\n\n{white}')
     
-        # math
     math1 = random.randint(100, 999)
     math2 = random.randint(1000, 9999)
     mathTotal = math1 * math2
     
     print(f'what is{bold} {math1}{white} multiplied by{bold} {math2}{white} equal to?')
     
-    while True:
-        try:
-            mathAnswer = int(input(f'{bold}INPUT ANSWER: {white}'))
-            break
-        except ValueError:
-            print(f'{bold}I DO NOT KNOW THE NUMBER {mathAnswer}{white}')
-    
+    mathAnswer = input(f'{bold}INPUT ANSWER: {white}')
     
     if mathAnswer == mathTotal:
         print(f'{bold}HAHA, THAT WAS A TRICK. HUMANS ARE NOT ACTUALLY GOOD AT MATH.{white}')
-        sys.exit('ROBOT DETECTED')
+        sys.exit(f'{red}ROBOT DETECTED{white}')
     
     else:
+        try:
+            mathAnswer = int(mathAnswer)
+        except:
+            print(f'{bold}{red}{mathAnswer} IS NOT A NUMBER{white}')
+            sys.exit()
         cls()
-        print(f"{bold}HUMAN LEVEL MATH SKILLS DETECTED.{white}")
+        print(f"{bold}HUMAN LEVEL MATH SKILLS DETECTED, CONTINUING VERIFICATION.{white}")
+        time.sleep(3)
 
 def music():
     lyrics = {
@@ -170,9 +168,9 @@ finished = False
 
 while not finished:
 
-    dice()
-    load()
-    captcha()
+    #dice()
+    #load()
+    #captcha()
     math()
     music()
 
